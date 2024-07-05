@@ -3,9 +3,9 @@ trigger:
 pool:
  vmimage: ubuntu-latest
 stages:
-  - stage: A
+  - stage: StageA
     jobs:
-      - job: jobA
-        
-        steps:
-          - script: echo "Hi"
+      - job: JobA
+  - stage: StageB
+    jobs:
+      - job: JobB
