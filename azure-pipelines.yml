@@ -1,18 +1,14 @@
 trigger:
-- master
-pool:
- vmimage: ubuntu-latest
+ - master 
 stages:
   - stage: StageA
+    pool: 
+     vmImage: ubuntu-latest
     jobs:
       - job: JobA
         displayName: This is job A
-  - stage: StageB
-    jobs:
       - job: JobB
-        displayName: This is job B
-  - stage: StageC
-    jobs:
-      - job: JobC
-        displayName: This is jobc
-    
+        displayName: this is job b
+        pool: 
+         vmImage: windows-lates
+
