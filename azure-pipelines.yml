@@ -1,41 +1,11 @@
 trigger:
 - master
-
 pool:
-  vmImage: 'ubuntu-latest'
+ vmimage: ubuntu-latest
 stages:
-- stage: Build
-  jobs:
-    - job: firstjob
-      steps:
-      - bash: echo Build First Job
-    - job: SecondJob
-      steps:
-      - bash: echo Build Second Job
-- stage: DevDeploy
-  variables:
-    environment: Dev
-  dependsOn: Build
-  jobs:
-    - job: DevFist
-      steps:
-      - bash: echo $(environment)DeployJob
-    - job: DevSeccond
-      steps:
-      - bash: echo Dev Second Job
-- stage: QADeploy
-  variables:
-     environment: 
-  dependsOn: Build
-  jobs:
-    - job: QAJob
-      steps:
-      - bash: echo $(environment)QADeploy
-- stage: ProdDeploy
-  dependsOn:
-  - DevDeploy
-  - QADeploy
-  jobs:
-    - job: ProductionsJob
-      steps:
-      - bash: echo $(environment)ProdDeploy
+  - stage: A
+    jobs:
+      - job: jobA
+        
+        steps:
+          - script: echo "Hi"
