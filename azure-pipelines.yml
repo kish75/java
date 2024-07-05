@@ -10,5 +10,5 @@ stages:
       - job: JobB
         displayName: this is job b
         pool: 
-         vmImage: windows-lates
+         vmImage: windows-latest
 
