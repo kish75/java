@@ -6,6 +6,13 @@ stages:
   - stage: StageA
     jobs:
       - job: JobA
+        displayName: This is job A
   - stage: StageB
     jobs:
       - job: JobB
+        displayName: This is job B
+  - stage: StageC
+    jobs:
+      - job: JobC
+        displayName: This is jobc
+    
