@@ -4,14 +4,23 @@ pool:
  name: TF
 
 variables:
- - group: MyKeyVaultVariableGroup
+  azuresubcription: KV-SP
+  keyvaultname: Demotfkey
+  secretName: my-secret
+  secretValue: my-secret-value
 
-steps:
-- task: AzureKeyVault@2
-  inputs:
-    azureSubscription: 'KV-SP'
-    KeyVaultName: 'Demotfkey'
-    SecretsFilter: '*'
-    RunAsPreJob: true
-- script: echo $(MySecret)
-  displayName: 'Display Secret' 
+stages:
+  - stage: UpdatekeyVault
+    displayName: "update keyvult"
+    jobs:
+      - job: updatesecret
+        displayName: "update secret"
+        steps:
+          -  task: AzureCLI@2
+             displayName: "update kv"
+             inputs:
+                azureSubscription: $(azuresubcription)
+                scriptType: bash
+                scriptLocation: inlineScript
+                inlineScript: |
+                   az keyvault secret set --valut-name $(keyvaultname) --name $(secretName) --value $(secretValue)
