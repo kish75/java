@@ -4,23 +4,14 @@ pool:
  name: TF
 
 variables:
-  - name: "demovar"
-    value: "demovalue"
-  - group: "vargroup1"
+ - group: MyKeyVaultVariableGroup
 
-
-stages:
-  - stage: Deploy
-    jobs:
-      - deployment: Test
-        environment: test
-        strategy:
-         runOnce:
-            deploy:
-              steps:
-                - checkout: self
-                - script: echo "varibale defined"
-         
-        
-
-
+steps:
+- task: AzureKeyVault@2
+  inputs:
+    azureSubscription: 'Free Trial(ebf7697d-eeb4-42b2-93fb-0b0022b90ffa)'
+    KeyVaultName: 'Demotfkey'
+    SecretsFilter: '*'
+    RunAsPreJob: true
+- script: echo $(MySecret)
+  displayName: 'Display Secret'
