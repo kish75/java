@@ -9,9 +9,9 @@ variables:
 steps:
 - task: AzureKeyVault@2
   inputs:
-    azureSubscription: 'Free Trial(ebf7697d-eeb4-42b2-93fb-0b0022b90ffa)'
+    azureSubscription: 'KV-SP'
     KeyVaultName: 'Demotfkey'
     SecretsFilter: '*'
     RunAsPreJob: true
 - script: echo $(MySecret)
-  displayName: 'Display Secret'
+  displayName: 'Display Secret' 
