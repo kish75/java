@@ -4,7 +4,7 @@ pool:
  name: TF
 
 variables:
-  azuresubcription: 97a8b729-6e6c-49f0-aa11-4e91490cf165
+  azuresubcription: KV-SP
   keyvaultname: Demotfkey
   secretName: my-secret
   secretValue: my-secret-value
