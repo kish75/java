@@ -6,6 +6,7 @@ pool:
 variables:
   - name: "demovar"
     value: "demovalue"
+  - group: "vargroup1"
 
 
 stages:
