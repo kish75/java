@@ -1,14 +1,25 @@
-trigger:
- - master 
+trigger: none
+
+pool:
+ name: TF
+
+variables:
+  - name: "demovar"
+    value: "demovalue"
+
+
 stages:
-  - stage: StageA
-    pool: 
-     vmImage: ubuntu-latest
+  - stage: Deploy
     jobs:
-      - job: JobA
-        displayName: This is job A
-      - job: JobB
-        displayName: this is job b
-        pool: 
-         vmImage: windows-latest
+      - deployment: Test
+        environment: test
+        strategy:
+         runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                - script: echo "varibale defined"
+         
+        
+
 
