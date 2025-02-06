@@ -1,0 +1,6 @@
+variables:
+ - name: "var1"
+   value: "var1vlue"
+ - name: "var2"
+   value: "var2value"
+  
